@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>APATHEIA | Growth Partner — Inteligencia Estratégica & Análisis de Alta Dirección</title>
+  
+  <!-- Google Fonts: Editorial Serif + Technical Precision Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            porcelain: '#FAF9F6',      // Base light canvas
+            ivory: '#F4F2EC',          // Secondary subtle soft layer
+            alabaster: '#ECE9E1',      // Muted structural borders
+            cardWhite: '#FFFFFF',      // Pure white card surfaces
+            onyx: '#121417',           // Deep graphite typography
+            charcoal: '#2D3139',       // Secondary readable text
+            stoneMuted: '#6B7280',     // Body descriptions and notes
+            gold: {
+              200: '#F0E5D3',
+              300: '#DFCDAE',
+              400: '#C5A880',          // Signature Champagne Gold
+              500: '#B39164',
+              600: '#947547',
+              700: '#735730',
+            },
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'Playfair Display', 'serif'],
+            editorial: ['Playfair Display', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          boxShadow: {
+            'luxury-soft': '0 20px 45px -15px rgba(184, 151, 104, 0.15), 0 4px 16px -2px rgba(18, 20, 23, 0.04)',
+            'card-elevated': '0 12px 32px -8px rgba(35, 38, 47, 0.06), 0 2px 6px -1px rgba(197, 168, 128, 0.15)',
+            'gold-glow': '0 0 35px -5px rgba(197, 168, 128, 0.35)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Smooth Scrollbar */
+    ::-webkit-scrollbar {
+      width: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #FAF9F6;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #DFCDAE;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B39164;
+    }
+
+    /* Architectural Subtle Gold Grid & Hairline Geometry */
+    .luxury-mesh-bg {
+      background-image: 
+        radial-gradient(rgba(197, 168, 128, 0.18) 1px, transparent 1px),
+        linear-gradient(to right, rgba(197, 168, 128, 0.04) 1px, transparent 1px);
+      background-size: 32px 32px, 128px 128px;
+    }
+
+    .hairline-gold {
+      border: 1px solid rgba(197, 168, 128, 0.32);
+    }
+
+    .hairline-gold-hover:hover {
+      border-color: rgba(179, 145, 100, 0.85);
+      box-shadow: 0 16px 36px -10px rgba(197, 168, 128, 0.22);
+    }
+
+    .gold-gradient-text {
+      background: linear-gradient(135deg, #121417 15%, #947547 60%, #C5A880 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Ambient Warm Spheres */
+    @keyframes gentleDrift {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.45; }
+      50% { transform: translateY(-20px) scale(1.06); opacity: 0.65; }
+    }
+    .ambient-gold-sphere {
+      animation: gentleDrift 12s infinite ease-in-out;
+    }
+
+    /* ========================================================
+       CUSTOM LUXURY CURSOR
+    ======================================================== */
+    @media (hover: hover) and (pointer: fine) {
+      body {
+        cursor: none;
+      }
+      a, button, input, select, textarea, [role="button"] {
+        cursor: none;
+      }
+      #cursor-dot, #cursor-ring {
+        display: block;
+      }
+    }
+
+    @media (hover: none) or (pointer: coarse) {
+      #cursor-dot, #cursor-ring {
+        display: none !important;
+      }
+    }
+
+    #cursor-dot {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 7px;
+      height: 7px;
+      background-color: #121417;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+    }
+
+    #cursor-ring {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 38px;
+      height: 38px;
+      border: 1.5px solid rgba(197, 168, 128, 0.75);
+      background: rgba(197, 168, 128, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.28s cubic-bezier(0.22, 1, 0.36, 1), 
+                  height 0.28s cubic-bezier(0.22, 1, 0.36, 1), 
+                  border-color 0.25s ease, 
+                  background-color 0.25s ease;
+    }
+
+    /* Hover State for Cursor */
+    body.cursor-active #cursor-ring {
+      width: 60px;
+      height: 60px;
+      border-color: rgba(179, 145, 100, 1);
+      background: rgba(197, 168, 128, 0.16);
+      backdrop-filter: blur(1px);
+    }
+    body.cursor-active #cursor-dot {
+      width: 4px;
+      height: 4px;
+      background-color: #B39164;
+    }
+  </style>
+</head>
+
+<body class="bg-porcelain text-onyx font-sans antialiased selection:bg-gold-300 selection:text-onyx relative overflow-x-hidden min-h-screen">
+
+  <!-- ========================================================
+       CUSTOM CURSOR ELEMENTS
+  ======================================================== -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Ambient Light Backdrop Glows -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-[15%] left-1/2 -translate-x-1/2 w-[1100px] h-[650px] bg-gradient-to-b from-gold-200/40 via-gold-300/15 to-transparent rounded-full blur-[130px] ambient-gold-sphere"></div>
+    <div class="absolute top-[40%] -right-[10%] w-[650px] h-[650px] bg-gold-200/25 rounded-full blur-[140px]"></div>
+    <div class="absolute bottom-[5%] -left-[10%] w-[600px] h-[600px] bg-ivory rounded-full blur-[120px]"></div>
+    <div class="absolute inset-0 luxury-mesh-bg opacity-70"></div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 ease-out bg-cardWhite border border-gold-400 text-onyx px-5 py-4 rounded-xl shadow-luxury-soft flex items-center space-x-3 pointer-events-none">
+    <span class="w-8 h-8 rounded-lg bg-gold-200/60 flex items-center justify-center text-gold-600 flex-shrink-0">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+    </span>
+    <span id="toast-message" class="text-xs font-semibold tracking-wide">Acción completada con éxito</span>
+  </div>
+
+  <!-- ========================================================
+       1. MINIMALIST FLOATING EXECUTIVE HEADER (LIGHT PALETTE)
+  ======================================================== -->
+  <header class="fixed top-0 left-0 right-0 z-40 px-4 md:px-8 py-4 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between bg-cardWhite/90 backdrop-blur-xl border border-alabaster rounded-2xl px-5 py-3 shadow-card-elevated">
+      
+      <!-- Brand & Untouched Logo Image -->
+      <a href="#" class="flex items-center space-x-3.5 group">
+        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-porcelain p-1.5 border border-gold-300/40 group-hover:border-gold-400 transition-colors shadow-sm">
+          <!-- Logo original intacto, sin filtros ni modificaciones -->
+          <img src="agp-logo.png" alt="APATHEIA | Growth Partner - Orlando Suárez" class="w-full h-full object-contain" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-serif tracking-[0.22em] text-xs font-bold text-onyx uppercase">APATHEIA</span>
+          <span class="text-[10px] tracking-[0.25em] text-gold-600 uppercase font-semibold">Growth Partner</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-xs tracking-widest uppercase font-semibold text-charcoal">
+        <a href="#tesis" class="hover:text-gold-600 transition-colors py-1">Tesis</a>
+        <a href="#servicios" class="hover:text-gold-600 transition-colors py-1">Servicios</a>
+        <a href="#metodologia" class="hover:text-gold-600 transition-colors py-1">Metodología</a>
+        <a href="#comparativa" class="hover:text-gold-600 transition-colors py-1">Diferencial</a>
+        <a href="#autoridad" class="hover:text-gold-600 transition-colors py-1">Dirección</a>
+      </nav>
+
+      <!-- Action Button & WhatsApp Direct Contact -->
+      <div class="flex items-center space-x-3">
+        <a href="#agendar" class="hidden sm:inline-flex items-center space-x-2 text-xs uppercase tracking-widest font-semibold px-4 py-2.5 rounded-xl border border-gold-400/60 bg-gold-200/30 hover:bg-gold-300/40 text-onyx shadow-sm hover:shadow transition-all duration-300">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Sesión de 25 min</span>
+        </a>
+
+        <!-- Mobile Menu Trigger -->
+        <button id="mobileMenuBtn" aria-label="Abrir Menú" class="md:hidden text-onyx p-2 rounded-xl bg-ivory border border-alabaster hover:border-gold-400">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobileDrawer" class="hidden md:hidden mt-2 max-w-7xl mx-auto bg-cardWhite/98 backdrop-blur-2xl border border-alabaster rounded-2xl p-6 shadow-luxury-soft flex-col space-y-4 text-xs uppercase tracking-widest font-semibold">
+      <a href="#tesis" class="text-charcoal hover:text-gold-600 py-1 block" onclick="toggleMobileMenu()">Tesis</a>
+      <a href="#servicios" class="text-charcoal hover:text-gold-600 py-1 block" onclick="toggleMobileMenu()">Servicios Estratégicos</a>
+      <a href="#metodologia" class="text-charcoal hover:text-gold-600 py-1 block" onclick="toggleMobileMenu()">Metodología</a>
+      <a href="#comparativa" class="text-charcoal hover:text-gold-600 py-1 block" onclick="toggleMobileMenu()">Diferencial de Mercado</a>
+      <a href="#autoridad" class="text-charcoal hover:text-gold-600 py-1 block" onclick="toggleMobileMenu()">Dirección Ejecutiva</a>
+      <div class="pt-3 border-t border-alabaster flex flex-col space-y-2">
+        <a href="#agendar" onclick="toggleMobileMenu()" class="w-full text-center py-3 rounded-xl bg-onyx text-white font-semibold shadow-sm">
+          Agendar Exploración de 25 min
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10 pt-32 md:pt-40">
+
+    <!-- ========================================================
+         2. HERO SECTION CON PRUEBAS A/B Y CREDENCIALES
+    ======================================================== -->
+    <section class="max-w-7xl mx-auto px-4 md:px-8 pb-20 md:pb-32">
+      
+      <!-- Conversion Badge & A/B Copy Switcher -->
+      <div class="flex items-center justify-between mb-8 flex-wrap gap-3">
+        <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-cardWhite border border-gold-300 text-[11px] uppercase tracking-widest text-gold-700 font-semibold shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-gold-400"></span>
+          <span>Inteligencia Estratégica & Análisis Sectorial</span>
+        </div>
+
+        <!-- A/B Copy Interactive Switcher -->
+        <div class="inline-flex items-center bg-cardWhite border border-alabaster rounded-xl p-1 text-[11px] tracking-wider text-charcoal shadow-sm">
+          <span class="px-2 font-mono uppercase text-stoneMuted text-[10px]">Prueba A/B:</span>
+          <button onclick="setHeroCopy('a')" id="btn-copy-a" class="px-2.5 py-1 rounded-lg bg-gold-200/80 text-onyx font-bold transition-all">A: Certeza Analítica</button>
+          <button onclick="setHeroCopy('b')" id="btn-copy-b" class="px-2.5 py-1 rounded-lg text-stoneMuted hover:text-onyx transition-all">B: Velocidad 48-72h</button>
+          <button onclick="setHeroCopy('c')" id="btn-copy-c" class="px-2.5 py-1 rounded-lg text-stoneMuted hover:text-onyx transition-all">C: Comités & Juntas</button>
+        </div>
+      </div>
+
+      <!-- Hero Grid: Headline & Strategic Executive Preview -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Column: Copy & CTAs -->
+        <div class="lg:col-span-7 space-y-7">
+          <h1 id="hero-headline" class="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.35rem] leading-[1.12] tracking-tight font-semibold text-onyx">
+            Transformamos datos complejos en <span class="gold-gradient-text italic font-editorial">decisiones accionables</span> con precisión matemática.
+          </h1>
+
+          <p id="hero-subheadline" class="text-charcoal text-base md:text-lg font-normal leading-relaxed max-w-2xl">
+            Asesoría de inteligencia y análisis de alto impacto para directores generales, comités de inversión y líderes que no pueden permitirse decidir a ciegas ni esperar semanas por un informe.
+          </p>
+
+          <!-- Key Evidence Visible Above the Fold (<10 seconds proof) -->
+          <div class="grid grid-cols-3 gap-3 py-4 border-y border-gold-300/40 bg-cardWhite/70 rounded-2xl px-4 shadow-sm max-w-xl">
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gold-700 font-bold">Liderazgo</p>
+              <p class="font-serif text-sm md:text-base text-onyx font-bold mt-0.5">Fedecámaras</p>
+              <p class="text-[11px] text-stoneMuted">Dir. Ejecutivo Anzoátegui</p>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gold-700 font-bold">Formación</p>
+              <p class="font-serif text-sm md:text-base text-onyx font-bold mt-0.5">Ingeniería + MBA</p>
+              <p class="text-[11px] text-stoneMuted">Rigor analítico gerencial</p>
+            </div>
+            <div>
+              <p class="text-[10px] uppercase tracking-widest text-gold-700 font-bold">Respuesta</p>
+              <p class="font-serif text-sm md:text-base text-gold-600 font-bold mt-0.5">Ciclos Ágiles</p>
+              <p class="text-[11px] text-stoneMuted">48-72h diagnósticos</p>
+            </div>
+          </div>
+
+          <!-- Primary & Secondary Buttons -->
+          <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
+            <a href="#agendar" class="group relative inline-flex items-center justify-center px-7 py-4 text-xs font-bold uppercase tracking-widest text-white bg-onyx hover:bg-gold-600 rounded-xl transition-all duration-300 shadow-md">
+              <span class="mr-2">Agendar Sesión de 25 Minutos</span>
+              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+
+            <a href="#servicios" class="inline-flex items-center justify-center px-6 py-4 text-xs font-bold uppercase tracking-widest text-onyx hover:text-gold-700 bg-cardWhite border border-gold-400/50 hover:border-gold-500 rounded-xl transition-all duration-300 shadow-sm">
+              Explorar Soluciones Estratégicas
+            </a>
+          </div>
+
+          <!-- Micro Trust Anchor -->
+          <p class="text-xs text-stoneMuted flex items-center space-x-2 pt-1 font-medium">
+            <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>Sesión confidencial protegida por acuerdo de reserva. Interlocución directa con Orlando Suárez.</span>
+          </p>
+        </div>
+
+        <!-- Right Column: Card with Logo & Executive Intelligence Brief -->
+        <div class="lg:col-span-5">
+          <div class="relative bg-cardWhite border hairline-gold rounded-3xl p-7 shadow-luxury-soft backdrop-blur-xl">
+            
+            <!-- Terminal Header with Brand Logo -->
+            <div class="flex items-center justify-between border-b border-alabaster pb-5 mb-5">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-porcelain p-1 border border-gold-300/60 shadow-sm">
+                  <!-- Logo original intacto -->
+                  <img src="agp-logo.png" alt="APATHEIA Logo" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <h2 class="text-xs font-bold text-onyx tracking-wider uppercase">Executive Brief</h2>
+                  <span class="text-[10px] text-stoneMuted font-mono">Región Oriente & Sectorial</span>
+                </div>
+              </div>
+              <span class="text-[10px] tracking-widest uppercase font-bold bg-gold-200/50 text-gold-700 border border-gold-300 px-2.5 py-1 rounded-full">
+                Live Analysis
+              </span>
+            </div>
+
+            <!-- Content Preview -->
+            <div class="space-y-4">
+              <div class="p-4 rounded-2xl bg-porcelain border border-alabaster space-y-2">
+                <div class="flex justify-between items-center text-xs">
+                  <span class="text-stoneMuted uppercase tracking-wider text-[10px] font-semibold">Índice de Presión Normativa & Costos</span>
+                  <span class="text-gold-700 font-mono font-bold">84.2% Sensibilidad Alta</span>
+                </div>
+                <div class="w-full bg-alabaster h-2 rounded-full overflow-hidden">
+                  <div class="bg-gradient-to-r from-gold-400 to-gold-600 h-2 rounded-full w-[84%]"></div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div class="p-3.5 rounded-2xl bg-porcelain border border-alabaster">
+                  <p class="text-[10px] uppercase tracking-wider text-stoneMuted font-semibold">Observatorio de Datos</p>
+                  <p class="text-lg font-serif text-onyx font-bold mt-1">100% Auditado</p>
+                  <p class="text-[11px] text-emerald-600 font-semibold mt-0.5">Cero intuición ciega</p>
+                </div>
+                <div class="p-3.5 rounded-2xl bg-porcelain border border-alabaster">
+                  <p class="text-[10px] uppercase tracking-wider text-stoneMuted font-semibold">Tiempos de Respuesta</p>
+                  <p class="text-lg font-serif text-gold-600 font-bold mt-1">48 a 72 Horas</p>
+                  <p class="text-[11px] text-stoneMuted mt-0.5">Diagnóstico Express</p>
+                </div>
+              </div>
+
+              <!-- Interactive Insight Case -->
+              <div class="p-4 rounded-2xl bg-ivory/60 border border-gold-300/60 space-y-2">
+                <div class="flex items-center justify-between text-xs font-semibold text-onyx">
+                  <span class="flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-gold-500 animate-ping"></span>
+                    <span class="font-bold">Caso Reciente: Benchmarking de Márgenes</span>
+                  </span>
+                  <span class="text-[10px] text-gold-700 font-mono font-bold">CONFIDENCIAL</span>
+                </div>
+                <p class="text-xs text-charcoal leading-relaxed">
+                  "El modelado econométrico aisló una distorsión operativa del 18.4% oculta en la estructura de fletes y tarifas municipales."
+                </p>
+              </div>
+
+              <!-- Card Action Bar -->
+              <div class="pt-2 flex items-center justify-between text-xs">
+                <span class="text-[11px] text-stoneMuted">¿Desea evaluar el caso de su organización?</span>
+                <a href="#agendar" class="text-gold-700 hover:text-gold-600 font-bold tracking-wide flex items-center space-x-1">
+                  <span>Solicitar revisión</span>
+                  <span>&rarr;</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         3. TESIS DE NEGOCIO: CLARIDAD VS. RUIDO
+    ======================================================== -->
+    <section id="tesis" class="py-20 md:py-28 bg-ivory/40 border-y border-alabaster relative">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        
+        <div class="max-w-3xl mb-16">
+          <p class="text-xs font-mono uppercase tracking-[0.25em] text-gold-600 font-bold">Tesis de Negocio</p>
+          <h2 class="font-serif text-2xl sm:text-3xl md:text-4xl text-onyx mt-3 leading-snug font-semibold">
+            La mayoría de las organizaciones no sufren por falta de datos, sino por <span class="gold-gradient-text font-editorial italic">parálisis por dispersión</span>.
+          </h2>
+          <p class="text-charcoal text-base mt-4 font-normal leading-relaxed">
+            En economías volátiles y marcos fiscales cambiantes, decidir basándose en opiniones gremiales no verificadas o en informes enciclopédicos de 120 páginas que nadie lee es un riesgo inaceptable para el capital.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Card 1 -->
+          <div class="bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-2xl transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-200/50 border border-gold-300 flex items-center justify-center text-gold-700 mb-6 shadow-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-onyx font-bold">1. La trampa de la intuición</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Lo que rindió frutos en ejercicios anteriores hoy colisiona contra transformaciones normativas, contracción del poder adquisitivo y nuevos costos ocultos. La experiencia directiva debe blindarse con evidencia empírica.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-2xl transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-200/50 border border-gold-300 flex items-center justify-center text-gold-700 mb-6 shadow-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-onyx font-bold">2. Informes densos e inoperantes</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Las consultorías convencionales tardan semanas en producir documentos voluminosos que quedan archivados. APATHEIA entrega síntesis ejecutivas de una sola página y memorandos quirúrgicos listos para ejecutar.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-2xl transition-all duration-300">
+            <div class="w-12 h-12 rounded-xl bg-gold-200/50 border border-gold-300 flex items-center justify-center text-gold-700 mb-6 shadow-sm">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-serif text-lg text-onyx font-bold">3. Rigor de ingeniería civil</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Aplicamos cálculo estructural y análisis de esfuerzos al flujo del negocio: indicadores de estabilidad económica, modelado de escenarios críticos y mitigación de riesgos antes de comprometer liquidez.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================
+         4. SERVICIOS ESTRATÉGICOS (LOS 4 PILARES DEL BRIEF)
+    ======================================================== -->
+    <section id="servicios" class="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold-600 font-bold">Marco de Soluciones</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-onyx font-semibold mt-2">Servicios de Inteligencia & Análisis</h2>
+        </div>
+        <p class="text-charcoal text-sm md:text-base max-w-md mt-4 md:mt-0 font-normal">
+          Diseñados a la medida de accionistas, directores y comités de capital que requieren certidumbre técnica y tiempos reducidos.
+        </p>
+      </div>
+
+      <!-- 4 Pillars Grid with Hairline Gold Accents -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        
+        <!-- Pillar 01: Diagnóstico Express -->
+        <div class="group bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-3xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-card-elevated">
+          <div class="absolute top-0 right-0 p-8 text-5xl font-serif text-alabaster group-hover:text-gold-200 transition-colors pointer-events-none font-bold">01</div>
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-widest text-gold-700 bg-gold-200/50 border border-gold-300 px-3 py-1 rounded-full mb-4 font-bold">
+              Alta Velocidad · 48-72h
+            </div>
+            <h3 class="font-serif text-2xl text-onyx group-hover:text-gold-600 transition-colors font-bold">Diagnóstico Express</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Análisis rápido, riguroso y quirúrgico de un problema puntual, contingencia normativa o sector específico que exige respuesta inmediata para la toma de decisión.
+            </p>
+            
+            <ul class="mt-6 space-y-2.5 text-xs text-charcoal border-t border-alabaster pt-5">
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Evaluación de impacto regulatorio y tributario regional</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Identificación de cuellos de botella y riesgos operativos</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Memorando ejecutivo directo y accionable (3 a 5 páginas)</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4 flex items-center justify-between border-t border-alabaster">
+            <button onclick="openModal('Diagnóstico Express')" class="text-xs uppercase tracking-wider text-onyx hover:text-gold-600 flex items-center space-x-1.5 font-bold transition-colors">
+              <span>Consultar alcance</span>
+              <span>&rarr;</span>
+            </button>
+            <span class="text-[11px] text-stoneMuted font-mono">Respuesta 48h</span>
+          </div>
+        </div>
+
+        <!-- Pillar 02: Informe Técnico Sectorial -->
+        <div class="group bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-3xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-card-elevated">
+          <div class="absolute top-0 right-0 p-8 text-5xl font-serif text-alabaster group-hover:text-gold-200 transition-colors pointer-events-none font-bold">02</div>
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-widest text-gold-700 bg-gold-200/50 border border-gold-300 px-3 py-1 rounded-full mb-4 font-bold">
+              Profundidad & Benchmarking
+            </div>
+            <h3 class="font-serif text-2xl text-onyx group-hover:text-gold-600 transition-colors font-bold">Informe Técnico Sectorial</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Investigación profunda de mercado respaldada por datos primarios, benchmarking de competidores directos y propuestas estratégicas fundamentadas en números.
+            </p>
+            
+            <ul class="mt-6 space-y-2.5 text-xs text-charcoal border-t border-alabaster pt-5">
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Recolección estadística mediante observatorio propio</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Comparativa cuantitativa de costos y curvas de sensibilidad</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Hojas de ruta para asignación óptima de capital</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4 flex items-center justify-between border-t border-alabaster">
+            <button onclick="openModal('Informe Técnico Sectorial')" class="text-xs uppercase tracking-wider text-onyx hover:text-gold-600 flex items-center space-x-1.5 font-bold transition-colors">
+              <span>Consultar alcance</span>
+              <span>&rarr;</span>
+            </button>
+            <span class="text-[11px] text-stoneMuted font-mono">Riguroso & Completo</span>
+          </div>
+        </div>
+
+        <!-- Pillar 03: Presentación Ejecutiva Estratégica -->
+        <div class="group bg-cardWhite hairline-gold hairline-gold-hover p-8 rounded-3xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-card-elevated">
+          <div class="absolute top-0 right-0 p-8 text-5xl font-serif text-alabaster group-hover:text-gold-200 transition-colors pointer-events-none font-bold">03</div>
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-widest text-gold-700 bg-gold-200/50 border border-gold-300 px-3 py-1 rounded-full mb-4 font-bold">
+              Juntas Directivas & Stakeholders
+            </div>
+            <h3 class="font-serif text-2xl text-onyx group-hover:text-gold-600 transition-colors font-bold">Presentación Ejecutiva Estratégica</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Síntesis de datos complejos para asambleas de socios, entidades financieras o directores que precisan digerir escenarios complejos en 15 minutos sin ambigüedad.
+            </p>
+            
+            <ul class="mt-6 space-y-2.5 text-xs text-charcoal border-t border-alabaster pt-5">
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Storytelling analítico con gráficos gerenciales impecables</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Blindaje de argumentos ante objeciones de inversores</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+                <span>Deck ejecutivo proyectable + anexo técnico respaldatorio</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4 flex items-center justify-between border-t border-alabaster">
+            <button onclick="openModal('Presentación Ejecutiva')" class="text-xs uppercase tracking-wider text-onyx hover:text-gold-600 flex items-center space-x-1.5 font-bold transition-colors">
+              <span>Consultar alcance</span>
+              <span>&rarr;</span>
+            </button>
+            <span class="text-[11px] text-stoneMuted font-mono">Alta Elocuencia</span>
+          </div>
+        </div>
+
+        <!-- Pillar 04: Retainer Mensual (Growth Partner) -->
+        <div class="group bg-cardWhite border-2 border-gold-400 p-8 rounded-3xl transition-all duration-300 relative overflow-hidden flex flex-col justify-between shadow-luxury-soft">
+          <div class="absolute top-0 right-0 p-8 text-5xl font-serif text-gold-200 group-hover:text-gold-300 transition-colors pointer-events-none font-bold">04</div>
+          <div>
+            <div class="inline-flex items-center space-x-2 text-[10px] uppercase font-mono tracking-widest text-gold-700 bg-gold-200/80 border border-gold-400 px-3 py-1 rounded-full mb-4 font-bold">
+              Alianza Continua · Cupos Limitados
+            </div>
+            <h3 class="font-serif text-2xl text-onyx group-hover:text-gold-600 transition-colors font-bold">Retainer Mensual (Growth Partner)</h3>
+            <p class="text-charcoal text-sm mt-3 leading-relaxed">
+              Acompañamiento continuo como su dirección externa de inteligencia. Investigación bajo demanda, seguimiento permanente de normativas y soporte en comités.
+            </p>
+            
+            <ul class="mt-6 space-y-2.5 text-xs text-charcoal border-t border-alabaster pt-5">
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Disponibilidad prioritaria para consultas imprevistas</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Monitoreo continuo de coyuntura y riesgos competitivos</span>
+              </li>
+              <li class="flex items-center space-x-2.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Participación directa en reuniones mensuales de toma de decisión</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-8 pt-4 flex items-center justify-between border-t border-alabaster">
+            <button onclick="openModal('Retainer Mensual')" class="text-xs uppercase tracking-wider text-onyx hover:text-gold-600 flex items-center space-x-1.5 font-bold transition-colors">
+              <span>Postular organización</span>
+              <span>&rarr;</span>
+            </button>
+            <span class="text-[11px] text-gold-700 font-mono font-bold">Máximo 4 Empresas/Año</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         5. METODOLOGÍA DE TRABAJO (5 ETAPAS PREDECIBLES)
+    ======================================================== -->
+    <section id="metodologia" class="py-20 md:py-28 bg-ivory/50 border-y border-alabaster">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-16">
+          <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold-600 font-bold">Protocolo Operativo</span>
+          <h2 class="font-serif text-3xl sm:text-4xl text-onyx font-semibold mt-2">Metodología de 5 Etapas</h2>
+          <p class="text-charcoal text-sm mt-3 font-normal">
+            Un proceso sin incertidumbre ni retrasos. Cada etapa culmina en un entregable concreto y verificable.
+          </p>
+        </div>
+
+        <!-- 5 Steps Responsive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+          
+          <!-- Step 1 -->
+          <div class="bg-cardWhite hairline-gold p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <span class="font-mono text-xs text-gold-700 font-bold">FASE 01</span>
+            <h4 class="font-serif text-base text-onyx font-bold mt-2">Briefing Inicial</h4>
+            <p class="text-xs text-charcoal mt-2 leading-relaxed">
+              Definición del problema raíz, delimitación del alcance operativo y fijación de los entregables esperados.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-cardWhite hairline-gold p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <span class="font-mono text-xs text-gold-700 font-bold">FASE 02</span>
+            <h4 class="font-serif text-base text-onyx font-bold mt-2">Investigación</h4>
+            <p class="text-xs text-charcoal mt-2 leading-relaxed">
+              Recolección sistemática de datos primarios, benchmarking de competidores y modelado cuantitativo.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-cardWhite hairline-gold p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <span class="font-mono text-xs text-gold-700 font-bold">FASE 03</span>
+            <h4 class="font-serif text-base text-onyx font-bold mt-2">Entrega Preliminar</h4>
+            <p class="text-xs text-charcoal mt-2 leading-relaxed">
+              Borrador técnico para revisión cruzada con la dirección y ajustes finos antes del dictamen final.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bg-cardWhite hairline-gold p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <span class="font-mono text-xs text-gold-700 font-bold">FASE 04</span>
+            <h4 class="font-serif text-base text-onyx font-bold mt-2">Entrega Final</h4>
+            <p class="text-xs text-charcoal mt-2 leading-relaxed">
+              Documento o presentación ejecutiva terminada en formato acordado, listo para implementación.
+            </p>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="bg-cardWhite hairline-gold p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <span class="font-mono text-xs text-gold-700 font-bold">FASE 05</span>
+            <h4 class="font-serif text-base text-onyx font-bold mt-2">Seguimiento</h4>
+            <p class="text-xs text-charcoal mt-2 leading-relaxed">
+              Llamada de cierre para responder dudas, orientar la ejecución y asegurar el impacto en resultados.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         6. CUADRO COMPARATIVO: CONSULTORÍA TRADICIONAL VS APATHEIA
+    ======================================================== -->
+    <section id="comparativa" class="py-20 md:py-32 max-w-7xl mx-auto px-4 md:px-8">
+      
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold-600 font-bold">Diferencial de Mercado</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-onyx font-semibold mt-2">Por qué APATHEIA Growth Partner</h2>
+        <p class="text-charcoal text-sm mt-3">
+          La diferencia entre informes teóricos y herramientas de ingeniería para la toma de decisión.
+        </p>
+      </div>
+
+      <div class="bg-cardWhite border hairline-gold rounded-3xl overflow-hidden shadow-card-elevated">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-porcelain border-b border-alabaster">
+                <th class="py-4 px-6 font-serif text-onyx font-bold text-xs uppercase tracking-wider">Criterio Estratégico</th>
+                <th class="py-4 px-6 text-stoneMuted font-medium text-xs uppercase tracking-wider">Consultoría Genérica / Tradicional</th>
+                <th class="py-4 px-6 bg-gold-200/30 text-gold-700 font-bold text-xs uppercase tracking-wider border-l border-gold-300">APATHEIA | Growth Partner</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-alabaster">
+              <tr>
+                <td class="py-4 px-6 font-semibold text-onyx">Tiempo de respuesta</td>
+                <td class="py-4 px-6 text-stoneMuted">4 a 8 semanas por ciclo de informe</td>
+                <td class="py-4 px-6 bg-gold-200/10 text-onyx font-semibold border-l border-gold-300">48 a 72 horas en diagnósticos express</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 font-semibold text-onyx">Formato de entregable</td>
+                <td class="py-4 px-6 text-stoneMuted">Reportes de 100+ páginas difíciles de aplicar</td>
+                <td class="py-4 px-6 bg-gold-200/10 text-onyx font-semibold border-l border-gold-300">Memorandos directos de 1 a 5 páginas listos para junta</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 font-semibold text-onyx">Interlocución</td>
+                <td class="py-4 px-6 text-stoneMuted">Delegada en analistas junior</td>
+                <td class="py-4 px-6 bg-gold-200/10 text-onyx font-semibold border-l border-gold-300">Directa con Orlando Suárez (Ingeniero & MBA)</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 font-semibold text-onyx">Fuente de datos</td>
+                <td class="py-4 px-6 text-stoneMuted">Teorías desactualizadas o búsquedas en Google</td>
+                <td class="py-4 px-6 bg-gold-200/10 text-onyx font-semibold border-l border-gold-300">Observatorio propio y experiencia gremial en Fedecámaras</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-6 font-semibold text-onyx">Enfoque final</td>
+                <td class="py-4 px-6 text-stoneMuted">Diagnóstico pasivo sin compromiso</td>
+                <td class="py-4 px-6 bg-gold-200/10 text-onyx font-semibold border-l border-gold-300">Socio de crecimiento orientado a resultados y métricas</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================
+         7. AUTORIDAD Y PERFIL: ORLANDO SUÁREZ
+    ======================================================== -->
+    <section id="autoridad" class="py-20 md:py-32 bg-ivory/50 border-t border-alabaster">
+      <div class="max-w-7xl mx-auto px-4 md:px-8">
+        
+        <div class="bg-cardWhite hairline-gold rounded-3xl p-8 md:p-14 shadow-luxury-soft">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <!-- Executive Emblem Card with Logo Intact -->
+            <div class="lg:col-span-4 flex flex-col items-center text-center">
+              <div class="w-48 h-48 rounded-2xl bg-porcelain border-2 border-gold-300 p-4 shadow-card-elevated flex flex-col items-center justify-center relative">
+                <!-- Logotipo intacto sin alteraciones -->
+                <img src="agp-logo.png" alt="APATHEIA Logo Orlando Suárez" class="w-full h-full object-contain" />
+              </div>
+
+              <div class="mt-4">
+                <h3 class="font-serif text-xl text-onyx font-bold">Orlando Suárez</h3>
+                <p class="text-xs uppercase tracking-widest text-gold-700 font-bold mt-0.5">Ingeniero Civil & MBA</p>
+                <p class="text-[11px] text-stoneMuted mt-1">APATHEIA | Growth Partner</p>
+              </div>
+            </div>
+
+            <!-- Narrative Authority -->
+            <div class="lg:col-span-8 space-y-5">
+              <span class="text-xs font-mono uppercase tracking-[0.25em] text-gold-600 font-bold">Sobre la Dirección</span>
+              <h2 class="font-serif text-2xl sm:text-3xl text-onyx font-semibold">
+                Rigor analítico de ingeniería al servicio del <span class="gold-gradient-text font-editorial italic">capital empresarial</span>.
+              </h2>
+              
+              <p class="text-charcoal text-sm md:text-base leading-relaxed font-normal">
+                Ingeniero civil con maestría en gerencia empresarial y Director Ejecutivo en <strong class="text-onyx font-semibold">Fedecámaras Anzoátegui</strong>. He liderado investigaciones técnicas complejas, levantado observatorios de estadísticas desde cero y redactado guías especializadas para sectores estratégicos.
+              </p>
+
+              <p class="text-charcoal text-sm md:text-base leading-relaxed font-normal">
+                Mi modelo de investigación prescinde de la lentitud burocrática convencional: entrego análisis accionables de alto impacto en tiempos reducidos, transformando variables macroeconómicas e incertidumbre sectorial en ventajas competitivas medibles.
+              </p>
+
+              <!-- Credentials Grid -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3">
+                <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-porcelain border border-alabaster">
+                  <svg class="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                  <div class="text-xs">
+                    <span class="font-bold text-onyx block">Director Ejecutivo</span>
+                    <span class="text-stoneMuted">Fedecámaras Anzoátegui</span>
+                  </div>
+                </div>
+
+                <div class="flex items-start space-x-3 p-3.5 rounded-xl bg-porcelain border border-alabaster">
+                  <svg class="w-5 h-5 text-gold-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                  <div class="text-xs">
+                    <span class="font-bold text-onyx block">Observatorios Estadísticos</span>
+                    <span class="text-stoneMuted">Levantamiento de métricas y datos desde cero</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================
+         8. SECCIÓN DE CONVERSIÓN & AGENDAMIENTO DIRECTO (25 MIN)
+    ======================================================== -->
+    <section id="agendar" class="py-20 md:py-32 bg-porcelain border-t border-alabaster relative">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <div class="inline-flex items-center space-x-2 text-[11px] uppercase tracking-widest text-gold-700 bg-gold-200/60 border border-gold-300 px-3.5 py-1.5 rounded-full mb-3 font-bold">
+            <span class="w-2 h-2 rounded-full bg-gold-500"></span>
+            <span>Atención Directa y Personalizada</span>
+          </div>
+          <h2 class="font-serif text-3xl sm:text-4xl text-onyx font-semibold">
+            Agende una Conversación Exploratoria de 25 Minutos
+          </h2>
+          <p class="text-charcoal text-sm md:text-base mt-4 font-normal leading-relaxed">
+            En APATHEIA no ofrecemos servicios genéricos: diseñamos soluciones a la medida para socios que buscan resultados medibles. Evaluemos juntos si existe compatibilidad estratégica.
+          </p>
+        </div>
+
+        <!-- Conversion Card with Booking Form + Direct Executive Channels -->
+        <div class="bg-cardWhite hairline-gold rounded-3xl p-6 md:p-10 shadow-luxury-soft">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Direct Booking Form -->
+            <form id="bookingForm" onsubmit="handleBooking(event)" class="lg:col-span-7 space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Nombre y Cargo *</label>
+                  <input type="text" id="formName" required placeholder="Ej. Carlos Mendoza, Director" class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx placeholder-stoneMuted focus:outline-none focus:border-gold-500 transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Organización o Empresa *</label>
+                  <input type="text" id="formCompany" required placeholder="Ej. Grupo Oriente C.A." class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx placeholder-stoneMuted focus:outline-none focus:border-gold-500 transition-colors" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Correo Electrónico *</label>
+                  <input type="email" id="formEmail" required placeholder="director@empresa.com" class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx placeholder-stoneMuted focus:outline-none focus:border-gold-500 transition-colors" />
+                </div>
+                <div>
+                  <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Teléfono / WhatsApp *</label>
+                  <input type="tel" id="formPhone" required placeholder="+58 ..." class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx placeholder-stoneMuted focus:outline-none focus:border-gold-500 transition-colors" />
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Solución de Interés *</label>
+                <select id="serviceSelect" class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx focus:outline-none focus:border-gold-500 transition-colors">
+                  <option value="diagnostico">Diagnóstico Express (Problema o coyuntura normativa)</option>
+                  <option value="informe">Informe Técnico Sectorial (Benchmarking de mercado)</option>
+                  <option value="presentacion">Presentación Ejecutiva (Para socios o junta directiva)</option>
+                  <option value="retainer">Retainer Mensual (Growth Partner continuo)</option>
+                  <option value="otro">Requerimiento especial de inteligencia de negocios</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs uppercase tracking-wider text-charcoal font-semibold mb-1.5">Breve contexto del requerimiento</label>
+                <textarea id="formNotes" rows="3" placeholder="Detalle la decisión estratégica o problema a evaluar..." class="w-full bg-porcelain border border-alabaster rounded-xl px-4 py-3 text-sm text-onyx placeholder-stoneMuted focus:outline-none focus:border-gold-500 transition-colors"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl bg-onyx hover:bg-gold-600 text-white font-bold text-xs uppercase tracking-widest transition-all duration-300 shadow-md flex items-center justify-center space-x-2">
+                <span>Confirmar Sesión de 25 Minutos</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </button>
+            </form>
+
+            <!-- Channels & Direct Touchpoints -->
+            <div class="lg:col-span-5 bg-ivory/50 rounded-2xl p-6 border border-alabaster flex flex-col justify-between space-y-6">
+              
+              <div>
+                <h4 class="font-serif text-lg text-onyx font-bold mb-1">Canales Directos</h4>
+                <p class="text-xs text-charcoal leading-relaxed">
+                  Si requiere atención inmediata o desea enviar antecedentes de forma confidencial a la dirección:
+                </p>
+
+                <!-- Phone / WhatsApp Direct Button -->
+                <div class="mt-6 space-y-3">
+                  <a href="https://wa.me/584265831648?text=Hola%20Orlando,%20le%20escribo%20desde%20su%20web%20para%20una%20consulta%20estrat%C3%A9gica%20de%20negocio." target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-cardWhite border border-alabaster hover:border-emerald-500 transition-colors group shadow-sm">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-9 h-9 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600 border border-emerald-500/20">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.07 7.39C8.91 7.39 8.7 7.45 8.52 7.65C8.34 7.84 7.83 8.32 7.83 9.3C7.83 10.28 8.54 11.23 8.64 11.36C8.75 11.5 10.04 13.49 12.01 14.34C12.48 14.54 12.84 14.66 13.12 14.75C13.59 14.9 14.02 14.88 14.36 14.83C14.74 14.77 15.53 14.35 15.69 13.89C15.86 13.43 15.86 13.04 15.81 12.96C15.75 12.87 15.6 12.82 15.37 12.71C15.14 12.59 14.01 12.03 13.8 11.95C13.59 11.88 13.43 11.84 13.28 12.07C13.12 12.3 12.67 12.82 12.53 12.97C12.4 13.13 12.26 13.15 12.03 13.04C11.8 12.92 11.06 12.68 10.18 11.89C9.5 11.28 9.04 10.53 8.91 10.3C8.78 10.07 8.9 9.95 9.01 9.84C9.11 9.74 9.24 9.57 9.35 9.43C9.47 9.29 9.51 9.19 9.58 9.05C9.66 8.91 9.62 8.79 9.56 8.67C9.51 8.56 9.07 7.47 8.88 7.03C8.71 6.6 8.53 6.66 8.4 6.65C8.28 6.65 8.13 6.65 7.98 6.65L9.07 7.39Z"/></svg>
+                      </div>
+                      <div class="text-left">
+                        <span class="text-[10px] uppercase tracking-wider text-stoneMuted block font-semibold">WhatsApp Directo</span>
+                        <span class="text-xs font-bold text-onyx group-hover:text-gold-600 font-mono">+58 426 5831648</span>
+                      </div>
+                    </div>
+                    <span class="text-xs text-gold-700 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </a>
+
+                  <!-- Email with Instant Copy button -->
+                  <div class="flex items-center justify-between p-3.5 rounded-xl bg-cardWhite border border-alabaster hover:border-gold-400 transition-colors shadow-sm">
+                    <div class="flex items-center space-x-3 truncate">
+                      <div class="w-9 h-9 rounded-lg bg-gold-200/50 flex items-center justify-center text-gold-700 border border-gold-300 flex-shrink-0">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                      </div>
+                      <div class="truncate">
+                        <span class="text-[10px] uppercase tracking-wider text-stoneMuted block font-semibold">Correo Institucional</span>
+                        <a href="mailto:apatheia73@outlook.com" class="text-xs font-mono font-bold text-onyx hover:text-gold-600 truncate block">apatheia73@outlook.com</a>
+                      </div>
+                    </div>
+                    <button type="button" onclick="copyToClipboard('apatheia73@outlook.com', 'Correo copiado al portapapeles')" title="Copiar correo" class="p-2 text-stoneMuted hover:text-gold-700 ml-2">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                    </button>
+                  </div>
+
+                  <!-- Instagram Channel -->
+                  <a href="https://instagram.com/apatheia73" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 rounded-xl bg-cardWhite border border-alabaster hover:border-gold-400 transition-colors group shadow-sm">
+                    <div class="flex items-center space-x-3">
+                      <div class="w-9 h-9 rounded-lg bg-porcelain flex items-center justify-center text-gold-700 border border-gold-300">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" stroke-width="1.8"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" stroke-width="1.8"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" stroke-width="2"/></svg>
+                      </div>
+                      <div>
+                        <span class="text-[10px] uppercase tracking-wider text-stoneMuted block font-semibold">Publicaciones & Análisis</span>
+                        <span class="text-xs font-bold text-onyx group-hover:text-gold-600 font-mono">@apatheia73</span>
+                      </div>
+                    </div>
+                    <span class="text-xs text-gold-700 font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  </a>
+
+                </div>
+              </div>
+
+              <!-- Confidentiality Seal -->
+              <div class="pt-4 border-t border-alabaster text-[11px] text-stoneMuted flex items-center space-x-2">
+                <svg class="w-4 h-4 text-gold-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Privacidad rigurosa para proyectos corporativos y comités.</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================================
+       9. MODAL INTERACTIVO DE CONSULTA DE SERVICIO
+  ======================================================== -->
+  <div id="serviceModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-onyx/40 backdrop-blur-md px-4">
+    <div class="bg-cardWhite border hairline-gold rounded-3xl max-w-lg w-full p-6 md:p-8 relative shadow-luxury-soft">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-stoneMuted hover:text-onyx p-1">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <span class="text-[10px] font-mono uppercase tracking-widest text-gold-700 font-bold block mb-1">Alcance del Servicio</span>
+      <h3 id="modalServiceTitle" class="font-serif text-2xl text-onyx font-bold">Servicio Seleccionado</h3>
+      
+      <p id="modalServiceDesc" class="text-charcoal text-sm mt-3 leading-relaxed">
+        Nuestro equipo evaluará la pertinencia técnica y el cronograma disponible para este formato.
+      </p>
+
+      <div class="mt-6 pt-5 border-t border-alabaster flex flex-col sm:flex-row gap-3">
+        <a id="modalWhatsAppBtn" href="#" target="_blank" class="flex-1 py-3 px-4 rounded-xl bg-onyx hover:bg-gold-600 text-white text-center font-bold text-xs uppercase tracking-wider transition-colors shadow-sm">
+          Consultar por WhatsApp
+        </a>
+        <button onclick="selectServiceInFormAndScroll()" class="flex-1 py-3 px-4 rounded-xl bg-porcelain border border-alabaster hover:border-gold-400 text-onyx text-center font-bold text-xs uppercase tracking-wider transition-colors">
+          Completar Formulario
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       10. FOOTER INSTITUCIONAL (LOGO ORIGINAL INTACTO)
+  ======================================================== -->
+  <footer class="bg-porcelain border-t border-alabaster py-14 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="flex items-center space-x-4">
+        <!-- Logotipo original intacto -->
+        <div class="w-12 h-12 rounded-xl bg-cardWhite p-1 border border-gold-300 shadow-sm flex items-center justify-center">
+          <img src="agp-logo.png" alt="APATHEIA Logo" class="w-full h-full object-contain" />
+        </div>
+        <div class="flex flex-col text-left">
+          <span class="font-serif text-xs tracking-widest text-onyx uppercase font-bold">Orlando Suárez · APATHEIA</span>
+          <span class="text-[10px] tracking-wider text-gold-700 font-semibold">Growth Partner & Inteligencia de Negocios</span>
+        </div>
+      </div>
+
+      <div class="text-center md:text-right">
+        <p class="text-xs text-charcoal font-medium">
+          Fedecámaras Anzoátegui · Investigación Sectorial & Análisis
+        </p>
+        <p class="text-[11px] text-stoneMuted mt-1 font-mono">
+          &copy; <span id="currentYear"></span> APATHEIA. Todos los derechos reservados.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ========================================================
+       JAVASCRIPT: CURSOR DE LUJO, CRO, FORMULARIO Y TOASTS
+  ======================================================== -->
+  <script>
+    // Dynamic Year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // ========================================================
+    // CUSTOM LUXURY CURSOR LOGIC
+    // ========================================================
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mouseX = -100, mouseY = -100;
+    let ringX = -100, ringY = -100;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (cursorDot) {
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top = `${mouseY}px`;
+      }
+    });
+
+    // Smooth ring interpolation
+    function renderCursor() {
+      ringX += (mouseX - ringX) * 0.18;
+      ringY += (mouseY - ringY) * 0.18;
+      if (cursorRing) {
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top = `${ringY}px`;
+      }
+      requestAnimationFrame(renderCursor);
+    }
+    requestAnimationFrame(renderCursor);
+
+    // Expand cursor ring on interactive elements
+    const interactiveSelectors = 'a, button, input, select, textarea, [onclick]';
+    document.querySelectorAll(interactiveSelectors).forEach((el) => {
+      el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
+      el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
+    });
+
+    // Mobile Drawer Navigation
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    function toggleMobileMenu() {
+      if (mobileDrawer.classList.contains('hidden')) {
+        mobileDrawer.classList.remove('hidden');
+        mobileDrawer.classList.add('flex');
+      } else {
+        mobileDrawer.classList.add('hidden');
+        mobileDrawer.classList.remove('flex');
+      }
+    }
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // ========================================================
+    // A/B TESTING COPY SWITCHER
+    // ========================================================
+    const copyVariants = {
+      a: {
+        headline: 'Transformamos datos complejos en <span class="gold-gradient-text italic font-editorial">decisiones accionables</span> con precisión matemática.',
+        subheadline: 'Asesoría de inteligencia y análisis de alto impacto para directores generales, comités de inversión y líderes que no pueden permitirse decidir a ciegas ni esperar semanas por un informe.'
+      },
+      b: {
+        headline: 'Convertimos semanas de incertidumbre en <span class="gold-gradient-text italic font-editorial">48 horas de certeza</span> operativa.',
+        subheadline: 'Modelado sectorial ágil e inteligencia cuantitativa diseñada para gerentes generales que exigen velocidad, rigor técnico y cero burocracia.'
+      },
+      c: {
+        headline: 'Inteligencia de negocios y datos duros para <span class="gold-gradient-text italic font-editorial">juntas directivas</span> y comités de capital.',
+        subheadline: 'Observatorios estadísticos independientes y memorandos técnicos dirigidos por Orlando Suárez, Director Ejecutivo en Fedecámaras Anzoátegui.'
+      }
+    };
+
+    function setHeroCopy(variantKey) {
+      const headlineEl = document.getElementById('hero-headline');
+      const subheadlineEl = document.getElementById('hero-subheadline');
+
+      headlineEl.innerHTML = copyVariants[variantKey].headline;
+      subheadlineEl.innerHTML = copyVariants[variantKey].subheadline;
+
+      ['a', 'b', 'c'].forEach(k => {
+        const btn = document.getElementById('btn-copy-' + k);
+        if (k === variantKey) {
+          btn.className = 'px-2.5 py-1 rounded-lg bg-gold-200/80 text-onyx font-bold transition-all';
+        } else {
+          btn.className = 'px-2.5 py-1 rounded-lg text-stoneMuted hover:text-onyx transition-all';
+        }
+      });
+
+      showToast(`Variante de Copy ${variantKey.toUpperCase()} activada`);
+    }
+
+    // ========================================================
+    // SERVICE MODAL MANAGER
+    // ========================================================
+    let currentSelectedService = '';
+
+    function openModal(serviceTitle) {
+      currentSelectedService = serviceTitle;
+      const modal = document.getElementById('serviceModal');
+      const titleEl = document.getElementById('modalServiceTitle');
+      const descEl = document.getElementById('modalServiceDesc');
+      const waBtn = document.getElementById('modalWhatsAppBtn');
+
+      titleEl.textContent = serviceTitle;
+
+      if (serviceTitle.includes('Express')) {
+        descEl.textContent = 'Enfoque ágil de 48 a 72 horas para evaluar riesgos tributarios, impacto normativo o viabilidad de una acción comercial inmediata sin demoras burocráticas.';
+      } else if (serviceTitle.includes('Sectorial')) {
+        descEl.textContent = 'Estudio metodológico profundo con levantamiento de datos sectoriales, benchmarking de competidores directos y recomendaciones de inversión para comités.';
+      } else if (serviceTitle.includes('Presentación')) {
+        descEl.textContent = 'Estructuración visual y narrativa de datos para asambleas de accionistas, rondas de financiamiento bancario o comités ejecutivos.';
+      } else {
+        descEl.textContent = 'Acompañamiento continuo mensual bajo modalidad Growth Partner con acceso directo a consultas estratégicas y preparación de informes recurrentes.';
+      }
+
+      const encodedMsg = encodeURIComponent(`Hola Orlando Suárez, me interesa conocer más sobre el servicio de ${serviceTitle} en APATHEIA.`);
+      waBtn.href = `https://wa.me/584265831648?text=${encodedMsg}`;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('serviceModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function selectServiceInFormAndScroll() {
+      closeModal();
+      const select = document.getElementById('serviceSelect');
+      if (currentSelectedService.includes('Express')) select.value = 'diagnostico';
+      else if (currentSelectedService.includes('Sectorial')) select.value = 'informe';
+      else if (currentSelectedService.includes('Presentación')) select.value = 'presentacion';
+      else if (currentSelectedService.includes('Retainer')) select.value = 'retainer';
+      
+      const agendarSec = document.getElementById('agendar');
+      agendarSec.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    window.addEventListener('click', function(e) {
+      const modal = document.getElementById('serviceModal');
+      if (e.target === modal) closeModal();
+    });
+
+    // ========================================================
+    // FORM SUBMISSION & WHATSAPP SYNC
+    // ========================================================
+    function handleBooking(e) {
+      e.preventDefault();
+      
+      const name = document.getElementById('formName').value;
+      const company = document.getElementById('formCompany').value;
+      const select = document.getElementById('serviceSelect');
+      const serviceName = select.options[select.selectedIndex].text;
+      
+      showToast('Generando enlace directo con Orlando Suárez...');
+      
+      setTimeout(() => {
+        const msg = encodeURIComponent(`Hola Orlando Suárez. Mi nombre es ${name} de ${company}. Deseo coordinar la sesión de 25 minutos referente a: ${serviceName}.`);
+        window.open(`https://wa.me/584265831648?text=${msg}`, '_blank');
+      }, 1000);
+    }
+
+    // ========================================================
+    // COPY TO CLIPBOARD HELPER (SAFE IN ALL BROWSERS)
+    // ========================================================
+    function copyToClipboard(text, successMessage) {
+      const textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      textArea.style.left = "-9999px";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      
+      try {
+        const successful = document.execCommand('copy');
+        if (successful) {
+          showToast(successMessage || 'Copiado al portapapeles');
+        } else {
+          showToast('No se pudo copiar automáticamente');
+        }
+      } catch (err) {
+        showToast('Error al copiar');
+      }
+      document.body.removeChild(textArea);
+    }
+
+    // Toast Functionality
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toast-message');
+      toastMsg.textContent = message;
+      
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    // Navbar scroll depth transition
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 30) {
+        nav.classList.add('py-2');
+        nav.classList.remove('py-4');
+      } else {
+        nav.classList.add('py-4');
+        nav.classList.remove('py-2');
+      }
+    });
+  </script>
+</body>
+</html>
